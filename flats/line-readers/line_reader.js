@@ -1,10 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-
 const filePath = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, 'flatfile_data.txt');
 const delimiter = process.argv[3] ? process.argv[3] : '|';
-
 
 function parseDelimitedQuoted(filePath, delimiter) {
     const data = fs.readFileSync(filePath, 'utf8');

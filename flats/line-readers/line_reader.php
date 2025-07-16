@@ -1,5 +1,5 @@
 <?php
-// PHP script to check if each line in a pipe-delimited, quoted file has the same number of tokens as the header
+// PHP script to check if each line in a delimited, quoted file has the same number of tokens as the header
 $file = $argc > 1 ? $argv[1] : 'flatfile_data.txt';
 $delimiter = $argc > 2 ? $argv[2] : '|';
 
@@ -13,7 +13,6 @@ if (!$handle) {
     echo "Could not open file: $file\n";
     exit(1);
 }
-
 
 // Read header row
 $header = fgetcsv($handle, 0, $delimiter, '"');
