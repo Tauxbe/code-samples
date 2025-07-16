@@ -1,21 +1,21 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, 'flatfile_data.txt');
 
-function parsePipeDelimitedQuoted(filePath) {
+const filePath = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, 'flatfile_data.txt');
+const delimiter = process.argv[3] ? process.argv[3] : '|';
+
+
+function parseDelimitedQuoted(filePath, delimiter) {
     const data = fs.readFileSync(filePath, 'utf8');
     const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
     if (lines.length === 0) {
         console.log('File is empty.');
         return;
     }
-    // Use a regex to split on pipes not inside quotes
+    // Split on delimiter not inside quotes
     const splitLine = (line) => {
-        const regex = /\"([^\"]*)\"|[^|]+/g;
-        let match;
         let tokens = [];
-        let lastIndex = 0;
         let inQuotes = false;
         let current = '';
         for (let i = 0; i < line.length; i++) {
@@ -23,7 +23,7 @@ function parsePipeDelimitedQuoted(filePath) {
             if (char === '"') {
                 inQuotes = !inQuotes;
                 current += char;
-            } else if (char === '|' && !inQuotes) {
+            } else if (char === delimiter && !inQuotes) {
                 tokens.push(current.replace(/^"|"$/g, ''));
                 current = '';
             } else {
@@ -48,4 +48,4 @@ function parsePipeDelimitedQuoted(filePath) {
     }
 }
 
-parsePipeDelimitedQuoted(filePath);
+parseDelimitedQuoted(filePath, delimiter);

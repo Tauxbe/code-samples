@@ -4,9 +4,11 @@ using System.IO;
 
 class Program
 {
+
     static void Main(string[] args)
     {
         string filePath = args.Length > 0 ? args[0] : "flatfile_data.txt";
+        char delimiter = args.Length > 1 ? args[1][0] : '|';
         if (!File.Exists(filePath))
         {
             Console.WriteLine($"File not found: {filePath}");
@@ -21,14 +23,14 @@ class Program
                 Console.WriteLine("File is empty.");
                 return;
             }
-            var header = ParseLine(headerLine);
+            var header = ParseLine(headerLine, delimiter);
             int numColumns = header.Count;
             Console.WriteLine($"expecting: {numColumns} tokens");
             string line;
             int lineNum = 2;
             while ((line = reader.ReadLine()) != null)
             {
-                var row = ParseLine(line);
+                var row = ParseLine(line, delimiter);
                 if (row.Count != numColumns)
                 {
                     Console.WriteLine($"Warning: Line {lineNum} has {row.Count} tokens, expected {numColumns}.");
@@ -43,8 +45,8 @@ class Program
         }
     }
 
-    // Parses a pipe-delimited line with quoted fields
-    static List<string> ParseLine(string line)
+    // Parses a delimited line with quoted fields
+    static List<string> ParseLine(string line, char delimiter)
     {
         var tokens = new List<string>();
         bool inQuotes = false;
@@ -57,7 +59,7 @@ class Program
                 inQuotes = !inQuotes;
                 current.Append(c);
             }
-            else if (c == '|' && !inQuotes)
+            else if (c == delimiter && !inQuotes)
             {
                 tokens.Add(TrimQuotes(current.ToString()));
                 current.Clear();

@@ -3,9 +3,10 @@
 # Handles quoted fields with embedded delimiters using awk
 
 FILE="${1:-flatfile_data.txt}"
+DELIM="${2:-|}"
 
  # Get the expected number of columns from the header
-expected_cols=$(awk -F'|' 'NR==1 {
+expected_cols=$(awk -F"$DELIM" 'NR==1 {
     n=0
     s=$0
     inq=0
@@ -20,8 +21,8 @@ expected_cols=$(awk -F'|' 'NR==1 {
 
 echo "expecting: $expected_cols tokens"
 
-awk -v expected_cols="$expected_cols" '
-BEGIN { FS = "|" }
+awk -v expected_cols="$expected_cols" -v delim="$DELIM" '
+BEGIN { FS = delim }
 {
     n=0
     s=$0
@@ -29,7 +30,7 @@ BEGIN { FS = "|" }
     for(i=1;i<=length(s);i++){
         c=substr(s,i,1)
         if(c=="\"") inq=!inq
-        if(c=="|" && !inq) n++
+        if(c==delim && !inq) n++
     }
     cols=n+1
     if(NR==1) next
