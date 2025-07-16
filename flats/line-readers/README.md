@@ -74,14 +74,20 @@ In SQL Server Management Studio or sqlcmd:
 
 ---
 
-### Oracle (SQL*Loader)
+### MongoDB
 
 ```sh
-sqlldr username/password@db control=line_reader_oracle.ctl
+# Usage: ./line_reader_mongodb.sh [filename] [delimiter] [db] [collection]
+# Default filename: flatfile_data.txt
+# Default delimiter: |
+# Default db: natcrim
+# Default collection: sor_data
+./line_reader_mongodb.sh
+./line_reader_mongodb.sh mydata.csv , mydb mycollection
 ```
 
 ---
 
 ## Notes
 - All scripts will print a warning if a row does not match the expected number of tokens.
-- You can substitute any compatible pipe-delimited, quoted file as the argument.
+- You can substitute any compatible delimited, quoted file as the argument.
