@@ -1,16 +1,26 @@
 
-# Pipe-Delimited Quoted File Parser Examples
 
-This repository contains example scripts for validating and parsing pipe-delimited, quoted text files.
+# Tauxbe Data Example Code Repository
+
+This repository contains example code and scripts for working with Tauxbe data files. It provides practical demonstrations for reading, validating, and importing flat files (such as CSV or pipe-delimited files) into various systems and programming environments.
 
 ## Directory Structure
 
-- `flats/line-readers/`: Contains example scripts in Bash, JavaScript (Node.js), PHP, and C# for reading and validating pipe-delimited, quoted files. Each script checks that every row has the same number of tokens as the header row, even if delimiters appear inside quoted fields.
+- **flats/line-readers/**
+  - Example scripts for reading and validating delimited, quoted flat files in multiple languages and tools.
+  - Includes Bash, JavaScript (Node.js), PHP, C#, Emacs Lisp, and database import scripts for PostgreSQL, SQL Server, Oracle, and MongoDB.
+  - See the detailed usage and code examples in [flats/line-readers/README.md](flats/line-readers/README.md).
 
-## Usage & Details
+## How to Use
 
-See the [flats/line-readers/README.md](flats/line-readers/README.md) for detailed usage instructions and code examples for each language.
+Each subdirectory contains its own README.md with specific instructions and examples for the scripts and tools provided.
 
 ---
 
-You can substitute any compatible pipe-delimited, quoted file as the argument to any script. The default filename used in all examples is `flatfile_data.txt`.
+For more information, see the README in each subdirectory:
+
+- [flats/line-readers/README.md](flats/line-readers/README.md): Line readers and import scripts for flatfile data in various languages and databases.
+
+---
+
+You can substitute any compatible delimited, quoted file as the argument to any script. The default filename used in all examples is `flatfile_data.txt`.

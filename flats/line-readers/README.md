@@ -1,4 +1,4 @@
-# Pipe-Delimited Quoted File Line Readers
+# Quoted File Line Readers
 
 This directory contains example scripts in multiple languages to validate and parse a pipe-delimited, quoted text file. Each script checks that every row has the same number of tokens as the header row, even if delimiters appear inside quoted fields.
 
