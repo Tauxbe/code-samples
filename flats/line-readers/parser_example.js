@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, 'ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt');
+const filePath = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, 'flatfile_data.txt');
 
 function parsePipeDelimitedQuoted(filePath) {
     const data = fs.readFileSync(filePath, 'utf8');

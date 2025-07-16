@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        string filePath = args.Length > 0 ? args[0] : "ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt";
+        string filePath = args.Length > 0 ? args[0] : "flatfile_data.txt";
         if (!File.Exists(filePath))
         {
             Console.WriteLine($"File not found: {filePath}");

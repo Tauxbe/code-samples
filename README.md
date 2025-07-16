@@ -13,4 +13,4 @@ See the [flats/line-readers/README.md](flats/line-readers/README.md) for detaile
 
 ---
 
-You can substitute any compatible pipe-delimited, quoted file as the argument to any script.
+You can substitute any compatible pipe-delimited, quoted file as the argument to any script. The default filename used in all examples is `flatfile_data.txt`.

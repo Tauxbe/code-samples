@@ -1,6 +1,6 @@
 <?php
 // PHP script to check if each line in a pipe-delimited, quoted file has the same number of tokens as the header
-$file = $argc > 1 ? $argv[1] : 'ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt';
+$file = $argc > 1 ? $argv[1] : 'flatfile_data.txt';
 
 if (!file_exists($file)) {
     echo "File not found: $file\n";

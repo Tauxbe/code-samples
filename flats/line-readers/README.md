@@ -4,14 +4,14 @@ This directory contains example scripts in multiple languages to validate and pa
 
 ## Usage
 
-All scripts accept a filename as a command line argument. If no filename is provided, they default to `ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt`.
+All scripts accept a filename as a command line argument. If no filename is provided, they default to `flatfile_data.txt`.
 
 ---
 
 ### Bash
 
 ```sh
-bash parser_example.sh ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt
+bash parser_example.sh flatfile_data.txt
 ```
 
 ---
@@ -19,7 +19,7 @@ bash parser_example.sh ks_sor_kansas_sex_offender_registry_natcrim_snapshot_2025
 ### JavaScript (Node.js)
 
 ```sh
-node parser_example.js ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt
+node parser_example.js flatfile_data.txt
 ```
 
 ---
@@ -27,7 +27,7 @@ node parser_example.js ks_sor_kansas_sex_offender_registry_natcrim_snapshot_2025
 ### PHP
 
 ```sh
-php parser_example.php ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt
+php parser_example.php flatfile_data.txt
 ```
 
 ---
@@ -41,7 +41,43 @@ mcs ParserExample.cs
 
 Run:
 ```sh
-mono ParserExample.exe ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt
+mono ParserExample.exe flatfile_data.txt
+```
+
+---
+
+### Emacs Lisp
+
+1. Open `line_reader_emacs.el` in Emacs.
+2. Run:
+   - `M-x eval-buffer`
+   - `M-x line-reader-check-file` and select your `flatfile_data.txt` file.
+
+---
+
+### PostgreSQL
+
+In psql or a SQL script:
+```sql
+\i line_reader_postgresql.sql
+```
+
+---
+
+### SQL Server (MSSQL)
+
+In SQL Server Management Studio or sqlcmd:
+```sql
+-- Edit the file path and table name as needed
+:r line_reader_mssql.sql
+```
+
+---
+
+### Oracle (SQL*Loader)
+
+```sh
+sqlldr username/password@db control=line_reader_oracle.ctl
 ```
 
 ---

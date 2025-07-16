@@ -2,9 +2,9 @@
 # Bash script to check if each line in a pipe-delimited, quoted file has the same number of tokens as the header
 # Handles quoted fields with embedded delimiters using awk
 
-FILE="${1:-ks_sor_kansas_sex_offender_registry_natcrim_snapshot_20250617.txt}"
+FILE="${1:-flatfile_data.txt}"
 
-# Get the expected number of columns from the header
+ # Get the expected number of columns from the header
 expected_cols=$(awk -F'|' 'NR==1 {
     n=0
     s=$0
